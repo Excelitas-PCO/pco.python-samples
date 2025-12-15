@@ -42,7 +42,7 @@ def main():
         cam.record(image_count, mode="sequence")
         cam.wait_for_first_image()
 
-        img_m, meta = cam.image(0, data_format='Mono16', roi=None)  # (1,1,2048,2048) )
+        img_m, meta = cam.image(0, data_format='Mono16', crop=None)  # (1,1,2048,2048) )
         print(
             f'{"recorder num: "}{meta["recorder image number"]}{", camera num: "}{meta["timestamp"]["image counter"]}')
         print(f'{"dimensions: "}{img_m.shape}{", data_format: "}{meta["data format"]}')
@@ -53,7 +53,7 @@ def main():
             cam.load_lut("BGR8", user_lut_file)
 
         for i in range(image_count):
-            img_m, meta = cam.image(i, data_format='bgra', roi=None)
+            img_m, meta = cam.image(i, data_format='bgra', crop=None)
 
             print(
                 f'{"recorder num: "}{meta["recorder image number"]}{", camera num: "}{meta["timestamp"]["image counter"]}')
@@ -61,20 +61,20 @@ def main():
             # cv2 expects BGR image data
             cv2.imwrite(user_file_path+"/img_"+str(i)+".tif", cv2.cvtColor(img_m, cv2.COLOR_BGRA2BGR))
 
-        img_m, meta = cam.image(3, data_format='bgr', roi=None)
+        img_m, meta = cam.image(3, data_format='bgr', crop=None)
         print(
             f'{"recorder num: "}{meta["recorder image number"]}{", camera num: "}{meta["timestamp"]["image counter"]}')
         print(f'{"dimensions: "}{img_m.shape}{", data_format: "}{meta["data format"]}')
         cv2.imwrite(user_file_path+"/img_BGR8.tif", img_m)
 
         if cam.is_color:
-            img_m, meta = cam.image(4, data_format='bgr16', roi=None)
+            img_m, meta = cam.image(4, data_format='bgr16', crop=None)
             print(
                 f'{"recorder num: "}{meta["recorder image number"]}{", camera num: "}{meta["timestamp"]["image counter"]}')
             print(f'{"dimensions: "}{img_m.shape}{", data_format: "}{meta["data format"]}')
             cv2.imwrite(user_file_path+"/img_BGR16.tif", img_m)
 
-        img_avg = cam.image_average(data_format='bgr', roi=None)
+        img_avg = cam.image_average(data_format='bgr', crop=None)
         cv2.imwrite(user_file_path+"/img_avg.tif", img_avg)
 
 
