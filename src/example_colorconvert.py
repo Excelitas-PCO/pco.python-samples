@@ -17,7 +17,7 @@ logger.addHandler(pco.stream_handler)
 
 def main():
 
-    image_count = 5
+    image_count = 10
 
     with pco.Camera() as cam:
 

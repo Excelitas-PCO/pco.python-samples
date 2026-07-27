@@ -18,7 +18,7 @@ def main():
 
         cam.default_configuration()
 
-        cam.set_camram_allocation([50, 20, 5])
+        cam.camram_allocation = [50, 20, 5]
         cam.switch_to_camram(3)
 
         print("camram segment {}: {} / {}".format(cam.camram_segment, cam.camram_num_images, cam.camram_max_images))

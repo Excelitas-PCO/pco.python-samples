@@ -20,7 +20,7 @@ def main():
                              'roi': (1, 1, 1024, 1024)}
         cam.configure_auto_exposure(region_type='balanced', 
                                     min_exposure_s=1e-3,
-                                    max_exposure_s=500e-3)
+                                    max_exposure_s=50e-3)
         
         cam.record(10, 'ring buffer')
         cam.auto_exposure_on()

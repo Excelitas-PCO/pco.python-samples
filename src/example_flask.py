@@ -72,7 +72,6 @@ def main():
 
     with pco.Camera() as cam:
         cam.configuration = {
-            "roi": (1, 1, 1024, 1024),
             "timestamp": 'binary & ascii'
         }
         cam.record(10, "ring buffer")

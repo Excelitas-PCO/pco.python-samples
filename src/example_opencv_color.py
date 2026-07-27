@@ -21,7 +21,6 @@ def main():
         cam.configuration = {
             'timestamp': 'binary & ascii',
             'exposure time': 10e-3,
-            # 'roi': (1, 1, 512, 512),
         }
 
         cam.record(4, 'ring buffer')
